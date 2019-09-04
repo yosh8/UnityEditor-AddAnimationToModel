@@ -8,11 +8,11 @@ using System.Collections.Generic;
 
 public class CreateAnimator : MonoBehaviour
 {
-    static string pathAnimationClip = "Assets/Mixamo/Walking.anim";
-    static string modelPath = "Assets/vroid/MyModel.vrm";
-    static string prefabPath = "Assets/vroid/MyModel.prefab";
-    static string controllerPath = "Assets/vroid/animator.controller";
-    static string prefabForUploadPath = "Assets/ForUpload/Prefab.prefab";
+    static string pathAnimationClip = "Assets/VRoid2STYLY/AnimationClips/Walking.anim";
+    static string modelPath = "Assets/VRoid2STYLY/Models/MyModel.vrm";
+    static string prefabPath = "Assets/VRoid2STYLY/Models/MyModel.prefab";
+    static string controllerPath = "Assets/VRoid2STYLY/Models/animator.controller";
+    static string prefabForUploadPath = "Assets/VRoid2STYLY/ForUpload/VRoid_with_Motion.prefab";
     static AnimatorController controller;
     static List<string> fileList = new List<string>();
     static GameObject goFromPrefab;
@@ -67,6 +67,10 @@ public class CreateAnimator : MonoBehaviour
     public static void Import()
     {
         string path = EditorUtility.OpenFilePanel("Select file to import", "", "*");
+        if(path == "" || path == null)
+        {
+            return;
+        }
         //FileUtil.CopyFileOrDirectory("D:/Users/yosh8/Documents/STYLY.vrm", modelPath);
         FileUtil.CopyFileOrDirectory(path, modelPath);
         AssetDatabase.Refresh();
