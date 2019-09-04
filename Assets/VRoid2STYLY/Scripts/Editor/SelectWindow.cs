@@ -6,11 +6,12 @@ public class SelectWindow : EditorWindow
 {
     int selected;
     string[] array;
+    static SelectWindow exampleWindow;
 
-    [MenuItem("VRoid2STYLY/Select Animation")]
+   [MenuItem("VRoid2STYLY/Select Animation")]
     static void Open()
     {
-        var exampleWindow = CreateInstance<SelectWindow>();
+        exampleWindow = CreateInstance<SelectWindow>();
         exampleWindow.ShowAuxWindow();
     }
 
@@ -31,26 +32,16 @@ public class SelectWindow : EditorWindow
 
     void OnGUI()
     {
-        //selected = GUILayout.SelectionGrid(selected,
-        //    new string[] { "1", "2", "3" }, 1, "PreferencesKeysElement");
-
         selected = GUILayout.SelectionGrid(selected,
             array, 1, "PreferencesKeysElement");
 
-        if (GUILayout.Button("Create"))
-        {
-            Debug.Log("Clicked Button");
-            CreateAnimator.SetAnimationClipPath(selected);
-            CreateAnimator.Import();
-            CreateAnimator.CreateAnimatorController();
-            //LoadWindow.Open();
-        }
-        if (GUILayout.Button("Change Animation"))
+        if (GUILayout.Button("OK"))
         {
             CreateAnimator.SetAnimationClipPath(selected);
             CreateAnimator.CreateAnimatorController();
             CreateAnimator.Load();
             CreateAnimator.SetAnimatorController();
+            exampleWindow.Close();
         }
     }
 }
