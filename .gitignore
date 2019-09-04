@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/VRM/
+Assets/VRM.meta
+Assets/STYLY_Plugin/
+Assets/STYLY_Plugin.meta
+_Output/
