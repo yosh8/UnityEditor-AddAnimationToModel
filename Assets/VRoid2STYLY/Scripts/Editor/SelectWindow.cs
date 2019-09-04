@@ -41,7 +41,8 @@ public class SelectWindow : EditorWindow
         {
             Debug.Log("Clicked Button");
             CreateAnimator.SetAnimationClipPath(selected);
-            CreateAnimator.Execute();
+            CreateAnimator.Import();
+            CreateAnimator.CreateAnimatorController();
             //LoadWindow.Open();
         }
         if (GUILayout.Button("Change Animation"))

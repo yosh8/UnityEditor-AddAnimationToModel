@@ -33,7 +33,7 @@ public class CreateAnimator : MonoBehaviour
     public static void FindAnimationClips()
     {
         FileList.Clear();
-        string[] foldersToSearch = new string[] { "Assets/AnimationClips" };
+        string[] foldersToSearch = new string[] { "Assets/VRoid2STYLY/AnimationClips" };
 
         string[] guids = AssetDatabase.FindAssets("t:animationclip", foldersToSearch);
         foreach (var guid in guids)
@@ -55,28 +55,16 @@ public class CreateAnimator : MonoBehaviour
     }
 
 
-    //[MenuItem("MyMenu/CreateAnimatorController")]
-    public static void Execute()
-    {
-        CreateAnimatorController();
-        Import();
-        //Load();
-        //SetAnimatorController();
-    }
-
     public static void CreateAnimatorController()
     {
         AnimationClip clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(pathAnimationClip);
         Debug.Log("clip:"+clip);
         // Creates the controller
         controller = AnimatorController.CreateAnimatorControllerAtPathWithClip(controllerPath, clip);
-        Debug.Log("" + controller);
-        //var rootStateMachine = controller.layers[0].stateMachine;
-        //var stateA1 = rootStateMachine.AddState("stateA1");
     }
 
     //[MenuItem("MyMenu/Import file")]
-    static void Import()
+    public static void Import()
     {
         string path = EditorUtility.OpenFilePanel("Select file to import", "", "*");
         //FileUtil.CopyFileOrDirectory("D:/Users/yosh8/Documents/STYLY.vrm", modelPath);
