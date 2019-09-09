@@ -87,6 +87,7 @@ public class CreateAnimator : MonoBehaviour
 
         Debug.Log("in Load() prefab: " + prefab);
         goFromPrefab = GameObject.Instantiate(prefab);
+        goFromPrefab.name = "MyModel";
     }
 
     //[MenuItem("MyMenu/Set Animator Controller")]
