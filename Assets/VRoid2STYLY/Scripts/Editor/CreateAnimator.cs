@@ -87,7 +87,6 @@ public class CreateAnimator : MonoBehaviour
 
         Debug.Log("in Load() prefab: " + prefab);
         goFromPrefab = GameObject.Instantiate(prefab);
-        goFromPrefab.name = "MyModel";
     }
 
     //[MenuItem("MyMenu/Set Animator Controller")]
@@ -98,12 +97,13 @@ public class CreateAnimator : MonoBehaviour
         Debug.Log("controller name:" + controller.name);
         animator.runtimeAnimatorController = controller as RuntimeAnimatorController;
 
-        PrefabUtility.CreatePrefab(prefabForUploadPath, goFromPrefab);
+        var prefabForUpload = PrefabUtility.CreatePrefab(prefabForUploadPath, goFromPrefab);
+        PrefabUtility.ConnectGameObjectToPrefab(goFromPrefab, prefabForUpload);
     }
 
     static void RemoveInstance()
     {
-        GameObject go = GameObject.Find("MyModel(Clone)");
+        GameObject go = GameObject.Find("VRoid_with_Motion");
         DestroyImmediate(go);
     }
 }
