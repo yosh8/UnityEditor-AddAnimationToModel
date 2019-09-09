@@ -11,7 +11,10 @@ public class SelectWindow : EditorWindow
    [MenuItem("VRoid2STYLY/Select Animation")]
     static void Open()
     {
-        exampleWindow = CreateInstance<SelectWindow>();
+        if(null == exampleWindow)
+        {
+            exampleWindow = CreateInstance<SelectWindow>();
+        }
         exampleWindow.ShowAuxWindow();
     }
 
