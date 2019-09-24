@@ -9,7 +9,8 @@ using System.Collections.Generic;
 public class CreateAnimator : MonoBehaviour
 {
     static string pathAnimationClip = "Assets/VRoid2STYLY/AnimationClips/Walking.anim";
-    static string modelPath = "Assets/VRoid2STYLY/Models/MyModel.vrm";
+    static string modelDirectoryPath = "Assets/VRoid2STYLY/Models/";
+    static string modelPath = modelDirectoryPath + "MyModel";
     static string prefabPath = "Assets/VRoid2STYLY/Models/MyModel.prefab";
     static string controllerPath = "Assets/VRoid2STYLY/Models/animator.controller";
     static string prefabForUploadPath = "Assets/VRoid2STYLY/ForUpload/VRoid_with_Motion.prefab";
@@ -71,10 +72,15 @@ public class CreateAnimator : MonoBehaviour
         {
             return;
         }
-        //FileUtil.CopyFileOrDirectory("D:/Users/yosh8/Documents/STYLY.vrm", modelPath);
-        FileUtil.CopyFileOrDirectory(path, modelPath);
+        string extension = System.IO.Path.GetExtension(path);
+
+        FileUtil.DeleteFileOrDirectory(modelDirectoryPath);
+        string dirPath = System.IO.Directory.GetParent(Application.dataPath) + "/" + modelDirectoryPath;
+
+        System.IO.Directory.CreateDirectory(dirPath);
+        FileUtil.CopyFileOrDirectory(path, modelPath + extension);
+
         AssetDatabase.Refresh();
-        Debug.Log("Now Loading...");
     }
 
     //[MenuItem("MyMenu/Load prefab to Scene")]
