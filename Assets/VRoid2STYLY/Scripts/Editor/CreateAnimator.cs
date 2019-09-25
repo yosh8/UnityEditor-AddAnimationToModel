@@ -67,7 +67,7 @@ public class CreateAnimator : MonoBehaviour
     //[MenuItem("MyMenu/Import file")]
     public static void Import()
     {
-        string path = EditorUtility.OpenFilePanel("Select file to import", "", "*");
+        string path = EditorUtility.OpenFilePanel("Select file to import", "", "vrm");
         if(path == "" || path == null)
         {
             return;
